@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bharatrojgarsewa.com/sitemap.xml
+
+# Disallow admin pages if any
+User-agent: *
+Disallow: /admin/
+Disallow: /*.json$
