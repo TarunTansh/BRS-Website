@@ -70,4 +70,3 @@ yarn-error.log*
 # Build outputs (if any)
 dist/
 build/
-assets/brs-video.mp4
