@@ -58,6 +58,50 @@ body {
     color: var(--text-primary);
 }
 
+/* Logo image styling */
+.logo-img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: inline-block;
+    /* header logo: no decorative badge here; keep it clean */
+    background: transparent;
+    padding: 0;
+    border-radius: 4px;
+    box-shadow: none;
+    transition: transform 0.12s ease;
+}
+
+.logo-img:hover {
+    transform: translateY(-2px);
+}
+
+/* Language toggle */
+.lang-toggle {
+    display: inline-flex;
+    gap: 6px;
+    margin-right: 12px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    padding: 6px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.lang-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: transparent;
+}
+
+/* default language display */
+.lang-hi { display: none; }
+.lang-en { display: inline; }
+
 .logo-icon {
     font-size: 28px;
 }
@@ -105,12 +149,14 @@ body {
 }
 
 .btn-secondary {
-    background: var(--bg-light);
-    color: var(--text-primary);
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
-    background: var(--border-color);
+    background: var(--primary-color);
+    color: white;
 }
 
 .btn-white {
@@ -119,8 +165,9 @@ body {
 }
 
 .btn-large {
-    padding: 16px 32px;
-    font-size: 18px;
+    padding: 18px 40px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .whatsapp-icon {
@@ -147,6 +194,44 @@ body {
     margin-bottom: 24px;
 }
 
+/* Hero brand logo (large, centered above title) */
+.hero-brand-logo {
+    display: block;
+    margin: 0 auto 18px auto;
+    /* keep natural aspect ratio, limit height to avoid stretched tall images */
+    width: auto;
+    max-width: 48%;
+    max-height: 220px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Fallback text when hero brand image is missing */
+.hero-brand-text {
+    display: none;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #25D366 0%, #0ea07a 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Add a decorative container around hero logo to make it look like a badge */
+.hero-brand-logo {
+    padding: 10px;
+    border-radius: 14px;
+    background: var(--bg-white);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    border: 3px solid rgba(0,0,0,0.04);
+    /* left align the hero logo so it sits above the headline start */
+    margin: 0 0 18px 0;
+    display: inline-block;
+}
+
 .gradient-text {
     background: var(--gradient);
     -webkit-background-clip: text;
@@ -159,6 +244,12 @@ body {
     color: var(--text-secondary);
     margin-bottom: 32px;
     line-height: 1.8;
+}
+
+.hero-two-step {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 20px;
 }
 
 .hero-cta {
@@ -185,9 +276,33 @@ body {
 
 /* Phone Mockup */
 .phone-mockup {
+    /* hide the decorative phone mockup — show only the real demo video */
+    display: none;
     position: relative;
     width: 100%;
     max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Hero image container to hold the phone mockup and a positioned demo video */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-top-video {
+    /* centered, single-frame video */
+    display: block;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    /* green frame */
+    border: 6px solid var(--primary-color);
+    background: black;
+    z-index: 1;
     margin: 0 auto;
 }
 
@@ -298,10 +413,125 @@ body {
     line-height: 1.7;
 }
 
+/* Aadhaar verified image inside a feature card */
+.feature-verified-img {
+    display: block;
+    width: 140px;
+    height: auto;
+    margin: 0 auto 12px auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    background: white;
+    padding: 8px;
+}
+
+.verified-card { text-align: center; }
+
+/* DigiLocker partnership and partner logo */
+.partner-line { display:flex; align-items:center; gap:12px; justify-content:center; }
+.partner-text { color:var(--text-secondary); font-weight:600; }
+.partner-logo { width:320px; max-width:100%; height:auto; display:inline-block; vertical-align:middle; }
+
+/* Prominent partnership banner */
+.partner-banner { background: linear-gradient(90deg, rgba(37,211,102,0.06), rgba(18,140,126,0.03)); padding: 18px 0; border-top: 3px solid rgba(37,211,102,0.12); margin-top: 18px; }
+.partner-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:nowrap; }
+.partner-copy { flex: 1; }
+.partner-actions { flex: 0; display:flex; align-items:center; gap:12px; }
+.partner-copy strong { font-size:18px; color:var(--text-primary); display:block; }
+.partner-sub { color:var(--text-secondary); margin-top:6px; }
+.partner-banner-logo { width:800px !important; max-width:100%; height:auto; display:inline-block; margin-right:12px; }
+.partner-actions { display:flex; align-items:center; gap:12px; }
+
+@media (max-width:900px) {
+    .partner-inner { flex-direction:column; text-align:center; align-items:center; }
+    .partner-copy { width: 100%; }
+    .partner-copy strong { font-size: 16px; line-height: 1.4; }
+    .partner-sub { font-size: 14px; line-height: 1.5; margin-top: 8px; }
+    .partner-actions { flex-direction: column; width: 100%; margin-top: 16px; }
+    .partner-banner-logo { margin: 0 0 12px 0; width: 280px !important; }
+    .partner-logo { width:200px; }
+    .btn-secondary { width: 100%; max-width: 280px; }
+}
+
+/* Verification examples gallery */
+.verification-examples { padding: 48px 0; background: var(--bg-light); }
+.verification-gallery { display:flex; gap:24px; justify-content:center; align-items:flex-start; flex-wrap:wrap; margin-top:18px; }
+.verification-gallery figure { width: 360px; background:white; padding:10px; border-radius:12px; border:1px solid var(--border-color); box-shadow: var(--shadow-sm); text-align:center; }
+.verification-sample-img { width:100%; height:auto; border-radius:8px; display:block; }
+.verification-gallery figcaption { margin-top:8px; color:var(--text-secondary); font-weight:600; }
+
+/* verification images styling */
+.verification-gallery figure { position: relative; overflow: hidden; }
+
 /* How It Works Section */
 .how-it-works {
     padding: 80px 0;
     background: var(--bg-light);
+}
+
+/* Contact form styles */
+.contact-section {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+    margin-top: 12px;
+}
+
+.contact-card {
+    background: var(--bg-white);
+    padding: 32px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-md);
+}
+
+.contact-card h1 {
+    margin-bottom: 6px;
+}
+.contact-card .lead {
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+}
+
+.contact-form .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+}
+.contact-form .form-field { display:flex; flex-direction:column; }
+.contact-form .form-field.full { grid-column: 1 / -1; }
+.contact-form label { font-weight:700; margin-bottom:6px; color:var(--text-primary); }
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: #fff;
+    font-size: 15px;
+    color: var(--text-primary);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.contact-form textarea { resize: vertical; min-height:120px; }
+
+.form-actions { display:flex; gap:12px; margin-top:16px; }
+
+.contact-info .info-card {
+    background: linear-gradient(180deg,#ffffff,#f7f9f7);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+.contact-info h3 { margin-top:0; }
+
+@media (max-width: 900px) {
+    .contact-section { grid-template-columns: 1fr; }
+    .contact-form .form-grid { grid-template-columns: 1fr; }
 }
 
 .tabs {
@@ -432,6 +662,14 @@ body {
     margin-bottom: 8px;
 }
 
+/* Date shown under stat labels */
+.stat-date {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    font-weight: 600;
+}
+
 .stat-growth {
     color: var(--primary-color);
     font-weight: 600;
@@ -456,6 +694,34 @@ body {
     font-size: 20px;
     margin-bottom: 32px;
     opacity: 0.95;
+}
+
+/* Promo Video */
+.promo-video {
+    padding: 60px 0;
+    background: var(--bg-light);
+}
+
+.video-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.promo-player {
+    width: 100%;
+    max-width: 860px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    background: black;
+}
+
+.video-links {
+    margin-top: 12px;
 }
 
 /* Footer */
@@ -509,6 +775,38 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .nav {
+        padding: 12px 0;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 16px;
+        gap: 8px;
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .lang-toggle {
+        margin-right: 8px;
+    }
+
+    .lang-btn {
+        padding: 4px 6px;
+        font-size: 13px;
+    }
+
+    .btn-primary {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
     .nav-links {
         display: none;
     }
@@ -528,6 +826,22 @@ body {
     
     .hero-cta {
         flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .btn-large {
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+        padding: 16px 32px;
+        font-size: 18px;
+    }
+    
+    .btn-secondary {
+        background: white;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
     }
     
     .hero-stats {
@@ -536,6 +850,20 @@ body {
     
     .phone-mockup {
         display: none;
+    }
+    .hero-top-video {
+        display: block;
+    }
+
+    .logo-img {
+        width: 44px;
+        height: 44px;
+        padding: 6px;
+    }
+
+    .hero-brand-logo {
+        max-height: 200px;
+        max-width: 75%;
     }
     
     .section-header h2 {

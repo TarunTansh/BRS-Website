@@ -1,6 +1,6 @@
-# Ballia Rozgar Sewa - Website
+# Bharat Rojgar Sewa - Website
 
-Modern, responsive static website for Ballia Rozgar Sewa (भारत रोज़गार सेवा) - WhatsApp-based employment platform for Ballia.
+Modern, responsive static website for Bharat Rojgar Sewa (भारत रोज़गार सेवा) - WhatsApp-based employment platform for India.
 
 ## 🚀 Features
 
@@ -40,7 +40,7 @@ BRS-Website/
 
 - **7,039** registered candidates
 - **397** active jobs
-- **3,442** successful matches
+- **3,442** successful connections
 - **+135%** week-over-week growth
 
 ## 🚀 Deployment
@@ -72,7 +72,7 @@ Upload the files to any static hosting service:
 ## 🛠️ Customization
 
 ### Update Contact Number
-Find and replace `919335596776` with your WhatsApp number in:
+Find and replace `919993335498` with your WhatsApp number in:
 - `index.html` (multiple locations)
 
 ### Update Stats
@@ -108,7 +108,7 @@ Follow the existing HTML structure:
 
 All WhatsApp links use the format:
 ```
-https://wa.me/919335596776
+https://wa.me/919993335498
 ```
 
 Users can start a conversation with one click from:
@@ -167,18 +167,18 @@ To add sitemap:
 
 ## 📄 License
 
-Private - All rights reserved to Ballia Rozgar Sewa
+Private - All rights reserved to Bharat Rojgar Sewa
 
 ## 🤝 Contributing
 
-For updates or issues, contact via WhatsApp: +91 93355 96776
+For updates or issues, contact via WhatsApp: +91 9993335498
 
 ## 🔗 Links
 
 - **GitHub**: https://github.com/TarunTansh/BRS-Website
-- **WhatsApp**: https://wa.me/919335596776
+- **WhatsApp**: https://wa.me/919993335498
 - **Backend API**: Ballia-Rozgar-Sewa repository
 
 ---
 
-Made with ❤️ in Ballia
+Made with ❤️ in India
