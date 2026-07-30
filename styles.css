@@ -468,7 +468,7 @@ body {
 }
 
 .incubation-label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -477,7 +477,7 @@ body {
 }
 
 .incubation-org {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     color: #ffffff;
     line-height: 1.4;
@@ -491,13 +491,16 @@ body {
     }
     
     .incubation-label {
-        font-size: 11px;
+        font-size: 12px;
     }
     
     .incubation-org {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
+
+/* Verification examples gallery */
+.verification-examples { padding: 48px 0; background: var(--bg-light); }
 
 /* Verification examples gallery */
 .verification-examples { padding: 48px 0; background: var(--bg-light); }
