@@ -574,13 +574,13 @@ body {
 }
 
 .company-logo {
-    height: 70px;
+    height: 85px;
     width: auto;
-    max-width: 140px;
+    max-width: 160px;
     object-fit: contain;
     filter: brightness(1.15) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
     transition: all 0.3s ease;
-    padding: 8px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -634,9 +634,9 @@ body {
     }
 
     .company-logo {
-        height: 56px;
-        max-width: 110px;
-        padding: 6px;
+        height: 70px;
+        max-width: 130px;
+        padding: 10px;
     }
 }
 
