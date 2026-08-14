@@ -432,6 +432,214 @@ body {
 .partner-text { color:var(--text-secondary); font-weight:600; }
 .partner-logo { width:320px; max-width:100%; height:auto; display:inline-block; vertical-align:middle; }
 
+/* Bharat Rojgar Mahotsav Banner */
+.mahotsav-banner {
+    background: var(--gradient);
+    color: white;
+    padding: 48px 0;
+    margin: 32px 0;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.mahotsav-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: 16px;
+}
+
+.mahotsav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.mahotsav-header {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.mahotsav-header h2 {
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mahotsav-subtitle {
+    font-size: 17px;
+    font-weight: 600;
+    opacity: 0.98;
+    letter-spacing: 0.3px;
+}
+
+.mahotsav-events {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 28px 24px;
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mahotsav-events h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.events-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.event-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 18px 24px;
+    border-radius: 12px;
+    min-width: 160px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.event-item:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.event-item .event-date {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.event-item .event-city {
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.event-item .event-state {
+    font-size: 13px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.mahotsav-companies-logos {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 28px 24px;
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mahotsav-companies-logos h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.company-logos-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.company-logo {
+    height: 70px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+    filter: brightness(1.15) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    transition: all 0.3s ease;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.company-logo:hover {
+    transform: scale(1.12) translateY(-4px);
+    filter: brightness(1.25) drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .mahotsav-banner {
+        padding: 36px 0;
+        margin: 24px 0;
+    }
+
+    .mahotsav-header h2 {
+        font-size: 28px;
+    }
+
+    .mahotsav-subtitle {
+        font-size: 14px;
+    }
+
+    .mahotsav-events,
+    .mahotsav-companies-logos {
+        padding: 20px 16px;
+    }
+
+    .mahotsav-events h3,
+    .mahotsav-companies-logos h3 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .events-list {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .event-item {
+        width: 100%;
+        min-width: auto;
+        padding: 14px 18px;
+    }
+
+    .company-logos-grid {
+        gap: 16px;
+    }
+
+    .company-logo {
+        height: 56px;
+        max-width: 110px;
+        padding: 6px;
+    }
+}
+
 /* Prominent partnership banner */
 .partner-banner { background: linear-gradient(90deg, rgba(37,211,102,0.06), rgba(18,140,126,0.03)); padding: 18px 0; border-top: 3px solid rgba(37,211,102,0.12); margin-top: 18px; }
 .partner-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:nowrap; }
