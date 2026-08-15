@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bharat Rojgar Mahotsav feedback form">
+    <meta name="robots" content="noindex, nofollow">
+    <title>भारत रोजगार महोत्सव फीडबैक | Bharat Rojgar Mahotsav</title>
+    <link rel="icon" type="image/png" href="assets/brs-only-logo.png">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <main class="feedback-page">
+        <div class="feedback-shell">
+            <div class="feedback-header">
+                <div class="top-row">
+                    <a href="/index.html" class="back-link">← होम पर वापस</a>
+                    <div class="lang-toggle" aria-label="Language switcher">
+                        <button type="button" class="lang-btn active" data-lang="hi">HI</button>
+                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+
+                <div class="brand-row">
+                    <img src="assets/brs-only-logo.png" alt="Bharat Rojgar Sewa" class="brand-logo">
+                    <span>Bharat Rojgar Sewa</span>
+                </div>
+                <h1>भारत रोजगार महोत्सव फीडबैक</h1>
+                <p class="subtitle">आपकी राय हमें भविष्य के रोजगार महोत्सव और उम्मीदवार अनुभव को बेहतर बनाने में मदद करेगी।</p>
+            </div>
+
+            <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+            <form id="mahotsavFeedbackForm" class="feedback-form" novalidate>
+                <div class="form-grid two-col">
+                    <div class="field-group">
+                        <label for="event_city">इवेंट शहर <span class="required">*</span></label>
+                        <select id="event_city" name="event_city" required>
+                            <option value="">शहर चुनें</option>
+                            <option value="lucknow">लखनऊ</option>
+                            <option value="patna">पटना</option>
+                            <option value="ballia">बलिया</option>
+                        </select>
+                        <small class="error-message" data-error-for="event_city"></small>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="event_date">इवेंट तिथि <span class="required">*</span></label>
+                        <input id="event_date" name="event_date" type="date" required>
+                        <small class="error-message" data-error-for="event_date"></small>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="phone">फ़ोन नंबर <span class="required">*</span></label>
+                    <div class="phone-input-wrap">
+                        <span class="country-code">+91</span>
+                        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="9876543210" required>
+                    </div>
+                    <small class="error-message" data-error-for="phone"></small>
+                </div>
+
+                <fieldset class="scale-group">
+                    <legend>महोत्सव का आपका अनुभव कैसा रहा? <span class="required">*</span></legend>
+                    <div class="emoji-options" role="radiogroup" aria-label="Mahotsav experience rating">
+                        <label class="emoji-option">
+                            <input type="radio" name="mahotsav_experience" value="5" required>
+                            <span class="emoji">😊</span>
+                            <span>बहुत अच्छा</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="mahotsav_experience" value="4" required>
+                            <span class="emoji">🙂</span>
+                            <span>अच्छा</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="mahotsav_experience" value="3" required>
+                            <span class="emoji">😐</span>
+                            <span>सामान्य</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="mahotsav_experience" value="2" required>
+                            <span class="emoji">🙁</span>
+                            <span>खराब</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="mahotsav_experience" value="1" required>
+                            <span class="emoji">😞</span>
+                            <span>बहुत खराब</span>
+                        </label>
+                    </div>
+                    <small class="error-message" data-error-for="mahotsav_experience"></small>
+                </fieldset>
+
+                <fieldset class="scale-group">
+                    <legend>इंटरव्यू का अनुभव कैसा रहा? <span class="required">*</span></legend>
+                    <div class="emoji-options" role="radiogroup" aria-label="Interview experience rating">
+                        <label class="emoji-option">
+                            <input type="radio" name="interview_experience" value="5" required>
+                            <span class="emoji">😊</span>
+                            <span>बहुत अच्छा</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="interview_experience" value="4" required>
+                            <span class="emoji">🙂</span>
+                            <span>अच्छा</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="interview_experience" value="3" required>
+                            <span class="emoji">😐</span>
+                            <span>सामान्य</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="interview_experience" value="2" required>
+                            <span class="emoji">🙁</span>
+                            <span>खराब</span>
+                        </label>
+                        <label class="emoji-option">
+                            <input type="radio" name="interview_experience" value="1" required>
+                            <span class="emoji">😞</span>
+                            <span>बहुत खराब</span>
+                        </label>
+                    </div>
+                    <small class="error-message" data-error-for="interview_experience"></small>
+                </fieldset>
+
+                <div class="field-group">
+                    <label id="jobOpportunityQuestion">क्या आपको अच्छे नौकरी के अवसर मिले? <span class="required">*</span></label>
+                    <div class="emoji-options compact" role="radiogroup" aria-label="Job opportunities response">
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="job_opportunities" value="yes" required>
+                            <span class="emoji">👍</span>
+                            <span>हाँ</span>
+                        </label>
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="job_opportunities" value="somewhat" required>
+                            <span class="emoji">🤔</span>
+                            <span>कुछ हद तक</span>
+                        </label>
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="job_opportunities" value="no" required>
+                            <span class="emoji">👎</span>
+                            <span>नहीं</span>
+                        </label>
+                    </div>
+                    <small class="error-message" data-error-for="job_opportunities"></small>
+                </div>
+
+                <div class="field-group">
+                    <label id="recommendQuestion">क्या आप अपने दोस्तों को महोत्सव के बारे में बताएँगे? <span class="required">*</span></label>
+                    <div class="emoji-options compact" role="radiogroup" aria-label="Referral response">
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="recommend_friends" value="yes" required>
+                            <span class="emoji">👍</span>
+                            <span>हाँ</span>
+                        </label>
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="recommend_friends" value="maybe" required>
+                            <span class="emoji">🤔</span>
+                            <span>शायद</span>
+                        </label>
+                        <label class="emoji-option yes-no">
+                            <input type="radio" name="recommend_friends" value="no" required>
+                            <span class="emoji">👎</span>
+                            <span>नहीं</span>
+                        </label>
+                    </div>
+                    <small class="error-message" data-error-for="recommend_friends"></small>
+                </div>
+
+                <div class="field-group">
+                    <label for="suggestion">एक सुझाव बताइए — हम क्या बेहतर कर सकते हैं? </label>
+                    <textarea id="suggestion" name="suggestion" rows="5" placeholder="अपना सुझाव साझा करें..."></textarea>
+                    <small class="error-message" data-error-for="suggestion"></small>
+                </div>
+
+                <button type="submit" class="submit-btn">फीडबैक जमा करें</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="feedback.js?v=2"></script>
+</body>
+</html>
