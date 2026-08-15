@@ -352,8 +352,7 @@
                 throw new Error(errorText || 'Unable to submit feedback right now. Please try again.');
             }
 
-            setStatus('Thank you for your valuable feedback. Your suggestion will help improve Bharat Rojgar Sewa.', 'success');
-            form.reset();
+            window.location.href = 'thank-you.html?lang=' + encodeURIComponent(currentLang);
         } catch (error) {
             const message = error && error.message ? error.message : 'Unable to submit feedback right now. Please try again.';
             setStatus(message, 'error');

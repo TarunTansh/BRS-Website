@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for sharing your Bharat Rojgar Mahotsav feedback">
+    <meta name="robots" content="noindex, nofollow">
+    <title>धन्यवाद | Bharat Rojgar Mahotsav</title>
+    <link rel="icon" type="image/png" href="assets/brs-only-logo.png">
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+    <main class="feedback-page">
+        <section class="feedback-shell thank-you-shell" aria-labelledby="thankYouTitle">
+            <div class="top-row">
+                <div class="brand-row">
+                    <img src="assets/brs-only-logo.png" alt="Bharat Rojgar Sewa" class="brand-logo">
+                    <span>Bharat Rojgar Sewa</span>
+                </div>
+                <div class="lang-toggle" aria-label="Language switcher">
+                    <button type="button" class="lang-btn active" data-lang="hi">HI</button>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+
+            <div class="thank-you-content">
+                <div class="success-mark" aria-hidden="true">✓</div>
+                <h1 id="thankYouTitle">धन्यवाद!</h1>
+                <p id="thankYouMessage">आपके बहुमूल्य फीडबैक के लिए धन्यवाद। आपका सुझाव Bharat Rojgar Sewa को बेहतर बनाने में मदद करेगा।</p>
+                <button type="button" class="submit-btn" id="homeButton">ठीक है</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search || '');
+            const languageButtons = document.querySelectorAll('.lang-btn');
+            const title = document.getElementById('thankYouTitle');
+            const message = document.getElementById('thankYouMessage');
+            const homeButton = document.getElementById('homeButton');
+            const translations = {
+                hi: {
+                    documentTitle: 'धन्यवाद | Bharat Rojgar Mahotsav',
+                    title: 'धन्यवाद!',
+                    message: 'आपके बहुमूल्य फीडबैक के लिए धन्यवाद। आपका सुझाव Bharat Rojgar Sewa को बेहतर बनाने में मदद करेगा।',
+                    button: 'ठीक है'
+                },
+                en: {
+                    documentTitle: 'Thank You | Bharat Rojgar Mahotsav',
+                    title: 'Thank You!',
+                    message: 'Thank you for your valuable feedback. Your suggestion will help improve Bharat Rojgar Sewa.',
+                    button: 'OK'
+                }
+            };
+
+            function setLanguage(language) {
+                const selectedLanguage = translations[language] ? language : 'hi';
+                const content = translations[selectedLanguage];
+                document.documentElement.lang = selectedLanguage;
+                document.title = content.documentTitle;
+                title.textContent = content.title;
+                message.textContent = content.message;
+                homeButton.textContent = content.button;
+                languageButtons.forEach((button) => {
+                    button.classList.toggle('active', button.dataset.lang === selectedLanguage);
+                });
+            }
+
+            languageButtons.forEach((button) => {
+                button.addEventListener('click', function () {
+                    setLanguage(button.dataset.lang);
+                });
+            });
+
+            homeButton.addEventListener('click', function () {
+                window.location.href = '/index.html';
+            });
+
+            setLanguage(params.get('lang') || 'hi');
+        })();
+    </script>
+</body>
+</html>

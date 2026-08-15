@@ -338,6 +338,48 @@ textarea {
     cursor: wait;
 }
 
+.thank-you-shell {
+    max-width: 680px;
+}
+
+.thank-you-content {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    padding: 48px 16px 28px;
+    text-align: center;
+}
+
+.success-mark {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brs-green) 0%, var(--brs-teal) 100%);
+    color: white;
+    font-size: 2.6rem;
+    font-weight: 800;
+    box-shadow: 0 14px 28px rgba(18, 140, 126, 0.22);
+}
+
+.thank-you-content h1 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.thank-you-content p {
+    max-width: 540px;
+    margin: 0;
+    color: var(--brs-muted);
+    line-height: 1.7;
+}
+
+.thank-you-content .submit-btn {
+    min-width: 140px;
+    margin-top: 8px;
+}
+
 @media (max-width: 640px) {
     .two-col {
         grid-template-columns: 1fr;
