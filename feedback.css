@@ -49,6 +49,7 @@ textarea {
 
 .feedback-shell {
     width: min(900px, 100%);
+    container-type: inline-size;
     background: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(86, 122, 103, 0.12);
     border-radius: 24px;
@@ -465,5 +466,20 @@ textarea {
     .mobile-device .emoji-options,
     .mobile-device .emoji-options.compact {
         grid-template-columns: 1fr;
+    }
+}
+
+@container (max-width: 700px) {
+    .two-col {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .emoji-options,
+    .emoji-options.compact {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feedback-header h1 {
+        font-size: 2rem;
     }
 }
