@@ -123,10 +123,15 @@
     }
 
     langButtons.forEach((button) => {
-        button.addEventListener('click', () => setLanguage(button.dataset.lang));
+        button.addEventListener('click', () => {
+            const selectedLanguage = button.dataset.lang;
+            params.set('lang', selectedLanguage);
+            window.history.replaceState({}, '', window.location.pathname + '?' + params.toString());
+            setLanguage(selectedLanguage);
+        });
     });
 
-    setLanguage('hi');
+    setLanguage(params.get('lang') === 'en' ? 'en' : 'hi');
 
     function getConfiguredApiUrl() {
         if (!apiUrl || apiUrl.includes('your-backend-domain.example.com')) {
