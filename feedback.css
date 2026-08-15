@@ -431,3 +431,39 @@ textarea {
         margin-left: auto;
     }
 }
+
+/* Samsung browsers can report a desktop-width viewport in desktop-site mode. */
+.mobile-device .feedback-page {
+    align-items: flex-start;
+    padding: 16px 12px;
+}
+
+.mobile-device .feedback-shell {
+    width: 100%;
+    border-radius: 16px;
+    padding: 20px 16px;
+}
+
+.mobile-device .top-row {
+    flex-wrap: wrap;
+}
+
+.mobile-device .two-col {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.mobile-device .emoji-options,
+.mobile-device .emoji-options.compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mobile-device .feedback-header h1 {
+    font-size: 2rem;
+}
+
+@media (max-width: 480px) {
+    .mobile-device .emoji-options,
+    .mobile-device .emoji-options.compact {
+        grid-template-columns: 1fr;
+    }
+}
