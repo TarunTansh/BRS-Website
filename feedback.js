@@ -11,6 +11,10 @@
             back: '← होम पर वापस',
             submit: 'फीडबैक जमा करें',
             success: 'आपके बहुमूल्य फीडबैक के लिए धन्यवाद। आपका सुझाव Bharat Rojgar Sewa को बेहतर बनाने में मदद करेगा।',
+            submitting: 'जमा हो रहा है...',
+            apiNotConfigured: 'इस वातावरण के लिए फीडबैक API कॉन्फ़िगर नहीं है। सबमिट करने से पहले सही बैकएंड URL सेट करें।',
+            submitError: 'अभी फीडबैक जमा नहीं हो सका। कृपया दोबारा प्रयास करें।',
+            validationError: 'कृपया सभी आवश्यक फ़ील्ड भरें।',
             selectCity: 'शहर चुनें',
             cityLabel: 'इवेंट शहर',
             dateLabel: 'इवेंट तिथि',
@@ -31,6 +35,10 @@
             back: '← Back to Home',
             submit: 'Submit Feedback',
             success: 'Thank you for your valuable feedback. Your suggestion will help improve Bharat Rojgar Sewa.',
+            submitting: 'Submitting...',
+            apiNotConfigured: 'The feedback API is not configured for this environment. Set the correct backend URL before submitting.',
+            submitError: 'Unable to submit feedback right now. Please try again.',
+            validationError: 'Please complete all required fields.',
             selectCity: 'Select city',
             cityLabel: 'Event City',
             dateLabel: 'Event Date',
@@ -192,6 +200,10 @@
         formStatus.className = 'form-status ' + type;
     }
 
+    function getText(key) {
+        return (texts[currentLang] || texts.hi)[key];
+    }
+
     function clearError(fieldName) {
         const field = form.elements[fieldName];
         const errorElement = document.querySelector('[data-error-for="' + fieldName + '"]');
@@ -243,13 +255,13 @@
 
         const eventCity = (form.elements.event_city.value || '').trim();
         if (!eventCity) {
-            errors.event_city = 'Please select the event city.';
+            errors.event_city = getText('cityError');
             isValid = false;
         }
 
         const eventDate = (form.elements.event_date.value || '').trim();
         if (!eventDate) {
-            errors.event_date = 'Please choose the event date.';
+            errors.event_date = getText('dateError');
             isValid = false;
         }
 
@@ -262,7 +274,7 @@
         const requiredScaleFields = ['mahotsav_experience', 'interview_experience', 'job_opportunities', 'recommend_friends'];
         requiredScaleFields.forEach((fieldName) => {
             if (!getSelectedRadioValue(fieldName)) {
-                errors[fieldName] = 'Please choose an option.';
+                errors[fieldName] = getText('optionError');
                 isValid = false;
             }
         });
@@ -282,7 +294,7 @@
         const validation = validateForm();
 
         if (!validation.isValid) {
-            throw new Error('Validation failed');
+            throw new Error(getText('validationError'));
         }
 
         const payload = {
@@ -307,7 +319,7 @@
 
         const configuredApiUrl = getConfiguredApiUrl();
         if (!configuredApiUrl) {
-            throw new Error('Feedback API is not configured for this environment. Set window.MAHOTSAV_FEEDBACK_API_URL to your backend URL before submitting.');
+            throw new Error(getText('apiNotConfigured'));
         }
 
         return fetch(configuredApiUrl, {
@@ -327,14 +339,14 @@
         try {
             const configuredApiUrl = getConfiguredApiUrl();
             if (!configuredApiUrl) {
-                throw new Error('Feedback API is not configured for this environment. Set window.MAHOTSAV_FEEDBACK_API_URL to your backend URL before submitting.');
+                throw new Error(getText('apiNotConfigured'));
             }
 
             const payload = buildPayload();
             const submitButton = form.querySelector('button[type="submit"]');
             if (submitButton) {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
+                submitButton.textContent = getText('submitting');
             }
 
             let response = await fetch(configuredApiUrl, {
@@ -354,18 +366,18 @@
 
             if (!response.ok) {
                 const errorText = await response.text();
-                throw new Error(errorText || 'Unable to submit feedback right now. Please try again.');
+                throw new Error(errorText || getText('submitError'));
             }
 
             window.location.href = 'thank-you.html?lang=' + encodeURIComponent(currentLang);
         } catch (error) {
-            const message = error && error.message ? error.message : 'Unable to submit feedback right now. Please try again.';
+            const message = error && error.message ? error.message : getText('submitError');
             setStatus(message, 'error');
         } finally {
             const submitButton = form.querySelector('button[type="submit"]');
             if (submitButton) {
                 submitButton.disabled = false;
-                submitButton.textContent = 'Submit Feedback';
+                submitButton.textContent = getText('submit');
             }
         }
     });
