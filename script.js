@@ -67,14 +67,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    mediaGallery.querySelectorAll('.media-item').forEach(function(mediaItem) {
-        const image = mediaItem.querySelector('.media-image');
+    const openLightbox = function(image) {
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = 'hidden';
+    };
 
-        mediaItem.addEventListener('click', function() {
-            lightboxImage.src = image.src;
-            lightboxImage.alt = image.alt;
-            lightbox.hidden = false;
-            document.body.style.overflow = 'hidden';
+    mediaGallery.addEventListener('click', function(event) {
+        const image = event.target.closest('.media-image');
+
+        if (image && mediaGallery.contains(image)) {
+            openLightbox(image);
+        }
+    });
+
+    mediaGallery.querySelectorAll('.media-image').forEach(function(image) {
+        image.tabIndex = 0;
+        image.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openLightbox(image);
+            }
         });
     });
 });
