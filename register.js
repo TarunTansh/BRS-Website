@@ -98,6 +98,13 @@ async function submitRegistration(form, eventParams) {
     submitButton.textContent = 'Submitting...';
     setStatus('Submitting your registration...', 'success');
 
+    if (window.location.protocol === 'file:') {
+        setStatus('Registration must be submitted from the production website. Please open https://bharatrojgarsewa.com/register.html with your event QR link.', 'error');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Register and mark attendance';
+        return;
+    }
+
     try {
         const response = await fetch(REGISTRATION_API_URL, {
             method: 'POST',
