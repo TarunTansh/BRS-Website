@@ -67,17 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    for (let imageNumber = 1; imageNumber <= 32; imageNumber++) {
-        const mediaItem = document.createElement('div');
-        mediaItem.className = 'media-item';
-
-        const imageWrapper = document.createElement('div');
-        imageWrapper.className = 'media-image-wrapper';
-
-        const image = document.createElement('img');
-        image.src = `assets/media/media-${imageNumber}.jpeg`;
-        image.alt = `Bharat Rojgar Sewa media image ${imageNumber}`;
-        image.className = 'media-image';
+    mediaGallery.querySelectorAll('.media-item').forEach(function(mediaItem) {
+        const image = mediaItem.querySelector('.media-image');
 
         mediaItem.addEventListener('click', function() {
             lightboxImage.src = image.src;
@@ -85,9 +76,5 @@ document.addEventListener('DOMContentLoaded', function() {
             lightbox.hidden = false;
             document.body.style.overflow = 'hidden';
         });
-
-        imageWrapper.appendChild(image);
-        mediaItem.appendChild(imageWrapper);
-        mediaGallery.appendChild(mediaItem);
-    }
+    });
 });
