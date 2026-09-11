@@ -54,7 +54,7 @@ textarea {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 }
 
 .back-link {
@@ -72,27 +72,26 @@ textarea {
 
 .language-toggle {
     display: inline-flex;
-    gap: 4px;
+    gap: 6px;
     padding: 4px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: #f4faf6;
+    border: 1px solid rgba(18, 140, 126, 0.12);
+    border-radius: 999px;
+    background: rgba(18, 140, 126, 0.06);
 }
 
 .language-button {
     border: 0;
-    border-radius: 7px;
-    padding: 7px 10px;
+    border-radius: 999px;
+    padding: 8px 12px;
     color: var(--muted);
     background: transparent;
     cursor: pointer;
-    font-size: 0.8rem;
     font-weight: 800;
 }
 
 .language-button.active {
     color: #ffffff;
-    background: linear-gradient(135deg, var(--green), var(--teal));
+    background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
 }
 
 .brand-row {
@@ -281,7 +280,7 @@ textarea:user-invalid {
     }
 
     .header-row {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
 
     .brand-row {
