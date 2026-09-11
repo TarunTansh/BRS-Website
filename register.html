@@ -14,14 +14,20 @@
     <main class="registration-page">
         <section class="registration-shell" aria-labelledby="registrationTitle">
             <header class="registration-header">
-                <a href="/" class="back-link">&larr; Bharat Rojgar Sewa home</a>
+                <div class="header-row">
+                    <a href="/" class="back-link" data-i18n="back">&larr; Bharat Rojgar Sewa home</a>
+                    <div class="language-toggle" aria-label="Language selector">
+                        <button type="button" class="language-button active" data-language="en">EN</button>
+                        <button type="button" class="language-button" data-language="hi">HI</button>
+                    </div>
+                </div>
                 <div class="brand-row">
                     <img src="assets/brs-only-logo.png" alt="Bharat Rojgar Sewa logo" class="brand-logo">
                     <span>Bharat Rojgar Sewa</span>
                 </div>
-                <p class="eyebrow">Bharat Rojgar Mahotsav</p>
-                <h1 id="registrationTitle">Candidate registration</h1>
-                <p class="subtitle">Register for the employment event. Your attendance will be marked after successful submission.</p>
+                <p class="eyebrow" data-i18n="eyebrow">Bharat Rojgar Mahotsav</p>
+                <h1 id="registrationTitle" data-i18n="title">Candidate registration</h1>
+                <p class="subtitle" data-i18n="subtitle">Register for the employment event. Your attendance will be marked after successful submission.</p>
             </header>
 
             <div id="eventSummary" class="event-summary" hidden></div>
@@ -33,12 +39,12 @@
 
                 <div class="form-grid two-col">
                     <div class="field-group">
-                        <label for="name">Name <span class="required">*</span></label>
+                        <label for="name" data-i18n="name">Name <span class="required">*</span></label>
                         <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
                         <small class="error-message" data-error-for="name"></small>
                     </div>
                     <div class="field-group">
-                        <label for="phone">Phone number <span class="required">*</span></label>
+                        <label for="phone" data-i18n="phone">Phone number <span class="required">*</span></label>
                         <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="9876543210" required>
                         <small class="error-message" data-error-for="phone"></small>
                     </div>
@@ -46,17 +52,17 @@
 
                 <div class="form-grid two-col">
                     <div class="field-group">
-                        <label for="gender">Gender <span class="required">*</span></label>
+                        <label for="gender" data-i18n="gender">Gender <span class="required">*</span></label>
                         <select id="gender" name="gender" required>
-                            <option value="">Select gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                            <option value="" data-option="gender-placeholder">Select gender</option>
+                            <option value="Male" data-option="gender-male">Male</option>
+                            <option value="Female" data-option="gender-female">Female</option>
+                            <option value="Other" data-option="gender-other">Other</option>
                         </select>
                         <small class="error-message" data-error-for="gender"></small>
                     </div>
                     <div class="field-group">
-                        <label for="dateOfBirth">Date of birth <span class="required">*</span></label>
+                        <label for="dateOfBirth" data-i18n="dateOfBirth">Date of birth <span class="required">*</span></label>
                         <input id="dateOfBirth" name="date_of_birth" type="date" required>
                         <small class="error-message" data-error-for="date_of_birth"></small>
                     </div>
@@ -64,47 +70,47 @@
 
                 <div class="form-grid two-col">
                     <div class="field-group">
-                        <label for="area">Area <span class="required">*</span></label>
+                        <label for="area" data-i18n="area">Area <span class="required">*</span></label>
                         <input id="area" name="area" type="text" autocomplete="address-line1" maxlength="160" required>
                         <small class="error-message" data-error-for="area"></small>
                     </div>
                     <div class="field-group">
-                        <label for="city">City <span class="required">*</span></label>
+                        <label for="city" data-i18n="city">City <span class="required">*</span></label>
                         <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="100" required>
                         <small class="error-message" data-error-for="city"></small>
                     </div>
                 </div>
 
                 <div class="field-group">
-                    <label for="highestQualification">Highest qualification <span class="required">*</span></label>
+                    <label for="highestQualification" data-i18n="qualification">Highest qualification <span class="required">*</span></label>
                     <select id="highestQualification" name="highest_qualification" required>
-                        <option value="">Select highest qualification</option>
-                        <option value="Below 10th">Below 10th</option>
-                        <option value="10th Standard / SSLC">10th Standard / SSLC</option>
-                        <option value="12th Standard / PUC">12th Standard / PUC</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="ITI">ITI</option>
-                        <option value="Graduation">Graduation</option>
-                        <option value="Post Graduation">Post Graduation</option>
-                        <option value="Others">Others</option>
+                        <option value="" data-option="qualification-placeholder">Select highest qualification</option>
+                        <option value="Below 10th" data-option="qualification-below10">Below 10th</option>
+                        <option value="10th Standard / SSLC" data-option="qualification-10th">10th Standard / SSLC</option>
+                        <option value="12th Standard / PUC" data-option="qualification-12th">12th Standard / PUC</option>
+                        <option value="Diploma" data-option="qualification-diploma">Diploma</option>
+                        <option value="ITI" data-option="qualification-iti">ITI</option>
+                        <option value="Graduation" data-option="qualification-graduation">Graduation</option>
+                        <option value="Post Graduation" data-option="qualification-postgraduation">Post Graduation</option>
+                        <option value="Others" data-option="qualification-others">Others</option>
                     </select>
                     <small class="error-message" data-error-for="highest_qualification"></small>
                 </div>
 
                 <div class="form-grid two-col">
                     <div class="field-group">
-                        <label for="experienceYears">Experience years <span class="required">*</span></label>
+                        <label for="experienceYears" data-i18n="experienceYears">Experience years <span class="required">*</span></label>
                         <input id="experienceYears" name="experience_years" type="number" inputmode="numeric" min="0" max="60" step="1" value="0" required>
                         <small class="error-message" data-error-for="experience_years"></small>
                     </div>
                     <div class="field-group">
-                        <label for="experienceMonths">Experience months <span class="required">*</span></label>
+                        <label for="experienceMonths" data-i18n="experienceMonths">Experience months <span class="required">*</span></label>
                         <input id="experienceMonths" name="experience_months" type="number" inputmode="numeric" min="0" max="11" step="1" value="0" required>
                         <small class="error-message" data-error-for="experience_months"></small>
                     </div>
                 </div>
 
-                <button id="submitButton" type="submit" class="submit-button">Register and mark attendance</button>
+                <button id="submitButton" type="submit" class="submit-button" data-i18n="submit">Register and mark attendance</button>
             </form>
         </section>
     </main>

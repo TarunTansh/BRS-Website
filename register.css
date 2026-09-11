@@ -49,6 +49,14 @@ textarea {
     margin-bottom: 28px;
 }
 
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
 .back-link {
     display: inline-block;
     margin-bottom: 24px;
@@ -60,6 +68,31 @@ textarea {
 
 .back-link:hover {
     text-decoration: underline;
+}
+
+.language-toggle {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #f4faf6;
+}
+
+.language-button {
+    border: 0;
+    border-radius: 7px;
+    padding: 7px 10px;
+    color: var(--muted);
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.language-button.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--green), var(--teal));
 }
 
 .brand-row {
@@ -243,8 +276,12 @@ textarea:user-invalid {
     }
 
     .back-link {
-        margin-bottom: 20px;
+        margin-bottom: 0;
         font-size: 0.9rem;
+    }
+
+    .header-row {
+        margin-bottom: 20px;
     }
 
     .brand-row {
