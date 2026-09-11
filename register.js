@@ -114,16 +114,10 @@ async function submitRegistration(form, eventParams) {
             throw new Error(responseBody.message || responseBody.error || 'Registration could not be completed. Please try again.');
         }
 
-        setStatus('Registration successful. Attendance marked.', 'success');
-        form.reset();
-        form.elements.experience_years.value = '0';
-        form.elements.experience_months.value = '0';
-        form.elements.event_city.value = eventParams.eventCity;
-        form.elements.event_key.value = eventParams.eventKey;
-        form.querySelectorAll('input, select, textarea').forEach(function(field) {
-            field.disabled = true;
-        });
-        submitButton.textContent = 'Registration complete';
+        const successUrl = new URL('registration-success.html', window.location.href);
+        successUrl.searchParams.set('event_city', eventParams.eventCity);
+        successUrl.searchParams.set('event_key', eventParams.eventKey);
+        window.location.assign(successUrl.href);
     } catch (error) {
         setStatus(error.message, 'error');
         submitButton.disabled = false;
