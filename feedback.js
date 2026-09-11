@@ -55,7 +55,7 @@
         }
     };
 
-    let currentLang = 'hi';
+    let currentLang = 'en';
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -139,7 +139,7 @@
         });
     });
 
-    setLanguage(params.get('lang') === 'en' ? 'en' : 'hi');
+    setLanguage(params.get('lang') === 'hi' ? 'hi' : 'en');
 
     function getConfiguredApiUrl() {
         if (!apiUrl || apiUrl.includes('your-backend-domain.example.com')) {
@@ -201,7 +201,7 @@
     }
 
     function getText(key) {
-        return (texts[currentLang] || texts.hi)[key];
+        return (texts[currentLang] || texts.en)[key];
     }
 
     function clearError(fieldName) {
