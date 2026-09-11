@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for Bharat Rojgar Mahotsav.">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bharat Rojgar Mahotsav Registration | Bharat Rojgar Sewa</title>
+    <link rel="icon" type="image/png" href="assets/brs-only-logo.png">
+    <link rel="stylesheet" href="register.css?v=1">
+    <script defer src="register.js?v=1"></script>
+</head>
+<body>
+    <main class="registration-page">
+        <section class="registration-shell" aria-labelledby="registrationTitle">
+            <header class="registration-header">
+                <a href="/" class="back-link">&larr; Bharat Rojgar Sewa home</a>
+                <div class="brand-row">
+                    <img src="assets/brs-only-logo.png" alt="Bharat Rojgar Sewa logo" class="brand-logo">
+                    <span>Bharat Rojgar Sewa</span>
+                </div>
+                <p class="eyebrow">Bharat Rojgar Mahotsav</p>
+                <h1 id="registrationTitle">Candidate registration</h1>
+                <p class="subtitle">Register for the employment event. Your attendance will be marked after successful submission.</p>
+            </header>
+
+            <div id="eventSummary" class="event-summary" hidden></div>
+            <div id="formStatus" class="form-status" aria-live="polite" role="status"></div>
+
+            <form id="registrationForm" class="registration-form" novalidate>
+                <input id="eventCity" name="event_city" type="hidden">
+                <input id="eventKey" name="event_key" type="hidden">
+
+                <div class="form-grid two-col">
+                    <div class="field-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input id="name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                        <small class="error-message" data-error-for="name"></small>
+                    </div>
+                    <div class="field-group">
+                        <label for="phone">Phone number <span class="required">*</span></label>
+                        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="9876543210" required>
+                        <small class="error-message" data-error-for="phone"></small>
+                    </div>
+                </div>
+
+                <div class="form-grid two-col">
+                    <div class="field-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <small class="error-message" data-error-for="gender"></small>
+                    </div>
+                    <div class="field-group">
+                        <label for="dateOfBirth">Date of birth <span class="required">*</span></label>
+                        <input id="dateOfBirth" name="date_of_birth" type="date" required>
+                        <small class="error-message" data-error-for="date_of_birth"></small>
+                    </div>
+                </div>
+
+                <div class="form-grid two-col">
+                    <div class="field-group">
+                        <label for="area">Area <span class="required">*</span></label>
+                        <input id="area" name="area" type="text" autocomplete="address-line1" maxlength="160" required>
+                        <small class="error-message" data-error-for="area"></small>
+                    </div>
+                    <div class="field-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input id="city" name="city" type="text" autocomplete="address-level2" maxlength="100" required>
+                        <small class="error-message" data-error-for="city"></small>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="highestQualification">Highest qualification <span class="required">*</span></label>
+                    <select id="highestQualification" name="highest_qualification" required>
+                        <option value="">Select highest qualification</option>
+                        <option value="Below 10th">Below 10th</option>
+                        <option value="10th Standard / SSLC">10th Standard / SSLC</option>
+                        <option value="12th Standard / PUC">12th Standard / PUC</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="ITI">ITI</option>
+                        <option value="Graduation">Graduation</option>
+                        <option value="Post Graduation">Post Graduation</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <small class="error-message" data-error-for="highest_qualification"></small>
+                </div>
+
+                <div class="form-grid two-col">
+                    <div class="field-group">
+                        <label for="experienceYears">Experience years <span class="required">*</span></label>
+                        <input id="experienceYears" name="experience_years" type="number" inputmode="numeric" min="0" max="60" step="1" value="0" required>
+                        <small class="error-message" data-error-for="experience_years"></small>
+                    </div>
+                    <div class="field-group">
+                        <label for="experienceMonths">Experience months <span class="required">*</span></label>
+                        <input id="experienceMonths" name="experience_months" type="number" inputmode="numeric" min="0" max="11" step="1" value="0" required>
+                        <small class="error-message" data-error-for="experience_months"></small>
+                    </div>
+                </div>
+
+                <button id="submitButton" type="submit" class="submit-button">Register and mark attendance</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
