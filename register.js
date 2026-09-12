@@ -41,7 +41,7 @@ const translations = {
         submittingMessage: 'Submitting your registration...',
         localMessage: 'Registration must be submitted from the production website. Please open https://bharatrojgarsewa.com/register.html with your event QR link.',
         apiError: 'Registration could not be completed. Please try again.',
-        eventSummary: 'Bharat Rojgar Mahotsav | {city} Version'
+        eventSummary: 'Bharat Rojgar Mahotsav | {city} Edition'
     },
     hi: {
         back: '&larr; Bharat Rojgar Sewa होम',
