@@ -16,14 +16,35 @@
         .success-language-toggle {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 24px;
+            gap: 6px;
+            width: fit-content;
+            margin: 0 0 24px auto;
+            padding: 4px;
+            border: 1px solid rgba(18, 140, 126, 0.12);
+            border-radius: 999px;
+            background: rgba(18, 140, 126, 0.06);
         }
 
         .success-language-toggle a {
-            color: var(--teal);
-            font-size: 0.9rem;
-            font-weight: 700;
+            border-radius: 999px;
+            padding: 8px 12px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 800;
             text-decoration: none;
+        }
+
+        .success-language-toggle a.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--green) 0%, var(--teal) 100%);
+        }
+
+        .success-language-toggle a:hover {
+            color: var(--teal);
+        }
+
+        .success-language-toggle a.active:hover {
+            color: #ffffff;
         }
 
         .success-mark {
@@ -95,7 +116,8 @@
     <main class="registration-page">
         <section class="registration-shell success-shell" aria-labelledby="successTitle">
             <div class="success-language-toggle">
-                <a id="languageToggle" href="?lang=hi">हिंदी</a>
+                <a id="englishToggle" href="?lang=en">EN</a>
+                <a id="hindiToggle" href="?lang=hi">HI</a>
             </div>
             <div class="success-mark" aria-hidden="true">&#10003;</div>
             <div class="brand-row">
@@ -146,9 +168,13 @@
             document.getElementById('successMessage').textContent = text.message;
             document.getElementById('homeLink').textContent = text.home;
 
-            const languageToggle = document.getElementById('languageToggle');
-            languageToggle.textContent = text.languageLink;
-            languageToggle.href = `registration-success.html?event_city=${encodeURIComponent(eventCity)}&event_key=${encodeURIComponent(params.get('event_key') || '')}&lang=${language === 'en' ? 'hi' : 'en'}`;
+            const languageQuery = `event_city=${encodeURIComponent(eventCity)}&event_key=${encodeURIComponent(params.get('event_key') || '')}`;
+            const englishToggle = document.getElementById('englishToggle');
+            const hindiToggle = document.getElementById('hindiToggle');
+            englishToggle.href = `registration-success.html?${languageQuery}&lang=en`;
+            hindiToggle.href = `registration-success.html?${languageQuery}&lang=hi`;
+            englishToggle.classList.toggle('active', language === 'en');
+            hindiToggle.classList.toggle('active', language === 'hi');
 
             if (eventCity) {
                 eventSummary.textContent = text.event.replace('{city}', displayCity);
