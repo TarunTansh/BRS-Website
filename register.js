@@ -156,11 +156,17 @@ function formatCityName(city) {
 
 function setDateOfBirthLimit() {
     const today = new Date();
+    const earliestBirthDate = new Date(today.getFullYear() - 100, today.getMonth(), today.getDate());
     const latestBirthDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-    const year = latestBirthDate.getFullYear();
-    const month = String(latestBirthDate.getMonth() + 1).padStart(2, '0');
-    const day = String(latestBirthDate.getDate()).padStart(2, '0');
-    document.getElementById('dateOfBirth').max = `${year}-${month}-${day}`;
+    const formatDate = function(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+    const dateOfBirthInput = document.getElementById('dateOfBirth');
+    dateOfBirthInput.min = formatDate(earliestBirthDate);
+    dateOfBirthInput.max = formatDate(latestBirthDate);
 }
 
 function validateForm(form, eventParams) {
