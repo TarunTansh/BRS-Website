@@ -271,6 +271,7 @@ async function submitRegistration(form, eventParams) {
         const successUrl = new URL('registration-success.html', window.location.href);
         successUrl.searchParams.set('event_city', eventParams.eventCity);
         successUrl.searchParams.set('event_key', eventParams.eventKey);
+        successUrl.searchParams.set('lang', currentLanguage);
         window.location.assign(successUrl.href);
     } catch (error) {
         setStatus(error.message, 'error');

@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bharat Rojgar Mahotsav registration confirmation.">
     <meta name="robots" content="noindex, nofollow">
-    <title>पंजीकरण सफल | Bharat Rojgar Sewa</title>
+    <title>Registration successful | Bharat Rojgar Sewa</title>
     <link rel="icon" type="image/png" href="assets/brs-only-logo.png">
     <link rel="stylesheet" href="register.css?v=2">
     <style>
         .success-shell {
             text-align: center;
+        }
+
+        .success-language-toggle {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .success-language-toggle a {
+            color: var(--teal);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
         .success-mark {
@@ -81,16 +94,19 @@
 <body>
     <main class="registration-page">
         <section class="registration-shell success-shell" aria-labelledby="successTitle">
+            <div class="success-language-toggle">
+                <a id="languageToggle" href="?lang=hi">हिंदी</a>
+            </div>
             <div class="success-mark" aria-hidden="true">&#10003;</div>
             <div class="brand-row">
                 <img src="assets/brs-only-logo.png" alt="Bharat Rojgar Sewa logo" class="brand-logo">
                 <span>Bharat Rojgar Sewa</span>
             </div>
-            <p class="eyebrow">Bharat Rojgar Mahotsav</p>
-            <h1 id="successTitle">पंजीकरण सफल!</h1>
-            <p class="success-message">आपका पंजीकरण सफलतापूर्वक पूरा हो गया है। आपकी उपस्थिति दर्ज कर दी गई है।</p>
+            <p id="successEyebrow" class="eyebrow">Bharat Rojgar Mahotsav</p>
+            <h1 id="successTitle">Registration successful!</h1>
+            <p id="successMessage" class="success-message">Your registration is complete. Your attendance has been marked.</p>
             <div id="successEvent" class="success-event" hidden></div>
-            <a class="success-home-link" href="/">होम पेज पर जाएं</a>
+            <a id="homeLink" class="success-home-link" href="/">Go to homepage</a>
         </section>
     </main>
 
@@ -98,11 +114,44 @@
         (function () {
             const params = new URLSearchParams(window.location.search);
             const eventCity = (params.get('event_city') || '').trim().toLowerCase();
+            const language = params.get('lang') === 'hi' ? 'hi' : 'en';
             const eventSummary = document.getElementById('successEvent');
+            const translations = {
+                en: {
+                    title: 'Registration successful!',
+                    message: 'Your registration is complete. Your attendance has been marked.',
+                    eyebrow: 'Bharat Rojgar Mahotsav',
+                    event: 'Bharat Rojgar Mahotsav | {city} Edition',
+                    home: 'Go to homepage',
+                    languageLink: 'हिंदी',
+                    documentTitle: 'Registration successful | Bharat Rojgar Sewa'
+                },
+                hi: {
+                    title: 'पंजीकरण सफल!',
+                    message: 'आपका पंजीकरण सफलतापूर्वक पूरा हो गया है। आपकी उपस्थिति दर्ज कर दी गई है।',
+                    eyebrow: 'भारत रोजगार महोत्सव',
+                    event: 'भारत रोजगार महोत्सव | {city} संस्करण',
+                    home: 'होम पेज पर जाएं',
+                    languageLink: 'English',
+                    documentTitle: 'पंजीकरण सफल | Bharat Rojgar Sewa'
+                }
+            };
+            const text = translations[language];
+            const displayCity = eventCity ? eventCity.charAt(0).toUpperCase() + eventCity.slice(1) : '';
+
+            document.documentElement.lang = language;
+            document.title = text.documentTitle;
+            document.getElementById('successEyebrow').textContent = text.eyebrow;
+            document.getElementById('successTitle').textContent = text.title;
+            document.getElementById('successMessage').textContent = text.message;
+            document.getElementById('homeLink').textContent = text.home;
+
+            const languageToggle = document.getElementById('languageToggle');
+            languageToggle.textContent = text.languageLink;
+            languageToggle.href = `registration-success.html?event_city=${encodeURIComponent(eventCity)}&event_key=${encodeURIComponent(params.get('event_key') || '')}&lang=${language === 'en' ? 'hi' : 'en'}`;
 
             if (eventCity) {
-                const displayCity = eventCity.charAt(0).toUpperCase() + eventCity.slice(1);
-                eventSummary.textContent = `भारत रोजगार महोत्सव | ${displayCity} संस्करण`;
+                eventSummary.textContent = text.event.replace('{city}', displayCity);
                 eventSummary.hidden = false;
             }
         })();
