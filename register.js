@@ -34,6 +34,7 @@ const translations = {
         required: 'This field is required.',
         invalidPhone: 'Enter a valid 10-digit phone number.',
         futureDate: 'Date of birth cannot be in the future.',
+        underAge: 'Candidate must be at least 18 years old.',
         invalidYears: 'Enter years from 0 to 60.',
         invalidMonths: 'Enter months from 0 to 11.',
         checkFields: 'Please check the highlighted fields and try again.',
@@ -75,6 +76,7 @@ const translations = {
         required: 'यह फ़ील्ड आवश्यक है।',
         invalidPhone: '10 अंकों का सही फोन नंबर दर्ज करें।',
         futureDate: 'जन्म तिथि भविष्य की नहीं हो सकती।',
+        underAge: 'उम्मीदवार की आयु कम से कम 18 वर्ष होनी चाहिए।',
         invalidYears: '0 से 60 के बीच वर्ष दर्ज करें।',
         invalidMonths: '0 से 11 के बीच महीने दर्ज करें।',
         checkFields: 'कृपया चिह्नित फ़ील्ड जांचकर दोबारा प्रयास करें।',
@@ -152,6 +154,15 @@ function formatCityName(city) {
     return city ? city.charAt(0).toUpperCase() + city.slice(1) : city;
 }
 
+function setDateOfBirthLimit() {
+    const today = new Date();
+    const latestBirthDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    const year = latestBirthDate.getFullYear();
+    const month = String(latestBirthDate.getMonth() + 1).padStart(2, '0');
+    const day = String(latestBirthDate.getDate()).padStart(2, '0');
+    document.getElementById('dateOfBirth').max = `${year}-${month}-${day}`;
+}
+
 function validateForm(form, eventParams) {
     clearErrors();
     let isValid = true;
@@ -176,9 +187,18 @@ function validateForm(form, eventParams) {
     }
 
     const dateOfBirth = form.elements.date_of_birth.value;
-    if (dateOfBirth && new Date(`${dateOfBirth}T00:00:00`) > new Date()) {
-        setFieldError('date_of_birth', getText('futureDate'));
-        isValid = false;
+    if (dateOfBirth) {
+        const birthDate = new Date(`${dateOfBirth}T00:00:00`);
+        const today = new Date();
+        const latestBirthDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+        if (birthDate > today) {
+            setFieldError('date_of_birth', getText('futureDate'));
+            isValid = false;
+        } else if (birthDate > latestBirthDate) {
+            setFieldError('date_of_birth', getText('underAge'));
+            isValid = false;
+        }
     }
 
     const years = Number(form.elements.experience_years.value);
@@ -257,6 +277,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('registrationForm');
     const eventSummary = document.getElementById('eventSummary');
     const eventParams = getEventParams();
+
+    setDateOfBirthLimit();
 
     form.elements.event_city.value = eventParams.eventCity;
     form.elements.event_key.value = eventParams.eventKey;
