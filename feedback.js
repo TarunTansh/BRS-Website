@@ -27,7 +27,7 @@
             optionError: 'कृपया एक विकल्प चुनें।',
             jobQuestion: 'क्या आपको अच्छे नौकरी के अवसर मिले?',
             recommendQuestion: 'क्या आप अपने दोस्तों को महोत्सव के बारे में बताएँगे?',
-            cityOptions: { lucknow: 'लखनऊ', patna: 'पटना', ballia: 'बलिया', bahraich: 'बहराइच' }
+            cityOptions: { lucknow: 'लखनऊ', patna: 'पटना', ballia: 'बलिया', bahraich: 'बहराइच', chennai: 'चेन्नई' }
         },
         en: {
             title: 'Bharat Rojgar Mahotsav Feedback',
@@ -51,7 +51,7 @@
             optionError: 'Please choose an option.',
             jobQuestion: 'Did you get good job opportunities?',
             recommendQuestion: 'Will you recommend this event to your friends?',
-            cityOptions: { lucknow: 'Lucknow', patna: 'Patna', ballia: 'Ballia', bahraich: 'Bahraich' }
+            cityOptions: { lucknow: 'Lucknow', patna: 'Patna', ballia: 'Ballia', bahraich: 'Bahraich', chennai: 'Chennai' }
         }
     };
 
@@ -163,6 +163,10 @@
 
             if (matchedOption) {
                 form.elements.event_city.value = matchedOption.value;
+            }
+
+            if (normalizedCity === 'chennai' && !dateValue) {
+                form.elements.event_date.value = '2026-09-22';
             }
         }
 
