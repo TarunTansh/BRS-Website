@@ -1479,6 +1479,15 @@ body {
     margin-bottom: 12px;
 }
 
+.partner-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.partner-title-link:hover {
+    text-decoration: underline;
+}
+
 .partner-card p {
     font-size: 0.938rem;
     line-height: 1.6;
