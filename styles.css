@@ -697,6 +697,12 @@ body {
         margin: 24px 0;
     }
 
+    .candidate-video-title {
+        font-size: 1rem;
+        padding: 10px 16px;
+        white-space: nowrap;
+    }
+
     .mahotsav-header h2 {
         font-size: 28px;
     }
