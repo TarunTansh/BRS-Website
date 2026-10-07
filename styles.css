@@ -333,18 +333,16 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 360px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
 .hero-top-video {
     /* centered, single-frame video */
     display: block;
-    width: 100%;
-    max-width: 320px;
-    height: 420px;
-    object-fit: cover;
-    object-position: center top;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
     border-radius: 16px;
     box-shadow: var(--shadow-md);
     /* green frame */
@@ -356,7 +354,7 @@ body {
 
 .candidate-video-embed {
     width: 100%;
-    max-width: 320px;
+    max-width: 360px;
 }
 
 .candidate-network-video {
@@ -364,7 +362,7 @@ body {
     width: 100%;
     aspect-ratio: 9 / 16;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center;
     border: 6px solid var(--primary-color);
     border-radius: 16px;
