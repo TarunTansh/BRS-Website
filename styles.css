@@ -342,15 +342,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 18px;
-    gap: 24px;
+    align-items: left;
+    margin-top: 64px;
+    gap: 22px;
 }
 
 .candidate-video-title {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 12px 22px;
     border-radius: 999px;
     background: linear-gradient(135deg, rgba(37, 211, 102, 0.14), rgba(18, 140, 126, 0.08));
@@ -532,7 +532,7 @@ body {
     background: var(--gradient);
     color: white;
     padding: 48px 0;
-    margin: 32px 0;
+    margin: 16px 0;
     border-radius: 16px;
     box-shadow: var(--shadow-lg);
     position: relative;
