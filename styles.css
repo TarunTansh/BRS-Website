@@ -355,18 +355,20 @@ body {
 .candidate-video-embed {
     width: 100%;
     max-width: 360px;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border: 6px solid var(--primary-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    background: #061525;
 }
 
 .candidate-network-video {
     display: block;
     width: 100%;
-    aspect-ratio: 9 / 16;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     object-position: center center;
-    border: 6px solid var(--primary-color);
-    border-radius: 16px;
-    box-shadow: var(--shadow-md);
     background: #061525;
 }
 
@@ -1217,10 +1219,6 @@ body {
     }
     .hero-top-video {
         display: block;
-    }
-
-    .candidate-network-video {
-        height: auto;
     }
 
     .logo-img {
