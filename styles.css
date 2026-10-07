@@ -337,6 +337,13 @@ body {
     margin: 0 auto;
 }
 
+.candidate-video-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
 .hero-top-video {
     /* centered, single-frame video */
     display: block;
@@ -353,9 +360,10 @@ body {
 }
 
 .candidate-video-embed {
-    width: 880px;
+    width: min(880px, calc(100vw - 48px));
     max-width: 880px;
-    height: 720px;
+    aspect-ratio: 880 / 720;
+    height: auto;
     overflow: hidden;
     border: 6px solid var(--primary-color);
     border-radius: 16px;
@@ -1222,10 +1230,10 @@ body {
     }
 
     .candidate-video-embed {
-        width: 880px;
-        max-width: 880px;
-        height: 720px;
-        aspect-ratio: auto;
+        width: min(880px, calc(100vw - 32px));
+        max-width: min(880px, calc(100vw - 32px));
+        aspect-ratio: 880 / 720;
+        height: auto;
     }
 
     .logo-img {
