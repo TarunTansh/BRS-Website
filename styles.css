@@ -343,16 +343,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 12px;
-    gap: 14px;
+    margin-top: 18px;
+    gap: 24px;
 }
 
 .candidate-video-title {
-    font-size: 1.75rem;
-    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(37, 211, 102, 0.14), rgba(18, 140, 126, 0.08));
+    border: 1px solid rgba(37, 211, 102, 0.22);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    font-size: 1.5rem;
+    font-weight: 900;
     line-height: 1.2;
     text-align: center;
-    color: var(--text-primary);
+    color: var(--secondary-color);
+    letter-spacing: 0.02em;
     margin: 0;
 }
 
