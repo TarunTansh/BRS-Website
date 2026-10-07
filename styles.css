@@ -353,9 +353,9 @@ body {
 }
 
 .candidate-video-embed {
-    width: 100%;
-    max-width: 360px;
-    aspect-ratio: 9 / 16;
+    width: 880px;
+    max-width: 880px;
+    height: 720px;
     overflow: hidden;
     border: 6px solid var(--primary-color);
     border-radius: 16px;
@@ -1219,6 +1219,13 @@ body {
     }
     .hero-top-video {
         display: block;
+    }
+
+    .candidate-video-embed {
+        width: 880px;
+        max-width: 880px;
+        height: 720px;
+        aspect-ratio: auto;
     }
 
     .logo-img {
