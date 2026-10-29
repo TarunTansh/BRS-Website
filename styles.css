@@ -592,6 +592,21 @@ body {
     padding: 12px;
 }
 
+.upskilling-infographic-trigger {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.upskilling-infographic-trigger:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 4px;
+    border-radius: 10px;
+}
+
 .upskilling-infographic img {
     display: block;
     width: 100%;

@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const mediaGallery = document.querySelector('.media-gallery');
+    const infographicTrigger = document.querySelector('.upskilling-infographic-trigger');
 
-    if (!mediaGallery) {
+    if (!mediaGallery && !infographicTrigger) {
         return;
     }
 
@@ -50,9 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(lightbox);
 
     const lightboxImage = lightbox.querySelector('.media-lightbox-image');
+    const closeButton = lightbox.querySelector('.media-lightbox-close');
+    let previouslyFocusedElement = null;
     const closeLightbox = function() {
         lightbox.hidden = true;
         document.body.style.overflow = '';
+        if (previouslyFocusedElement) {
+            previouslyFocusedElement.focus();
+            previouslyFocusedElement = null;
+        }
     };
 
     lightbox.addEventListener('click', function(event) {
@@ -68,27 +75,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const openLightbox = function(image) {
+        previouslyFocusedElement = document.activeElement;
         lightboxImage.src = image.currentSrc || image.src;
         lightboxImage.alt = image.alt;
         lightbox.hidden = false;
         document.body.style.overflow = 'hidden';
+        closeButton.focus();
     };
 
-    mediaGallery.addEventListener('click', function(event) {
-        const image = event.target.closest('.media-image');
+    if (mediaGallery) {
+        mediaGallery.addEventListener('click', function(event) {
+            const image = event.target.closest('.media-image');
 
-        if (image && mediaGallery.contains(image)) {
-            openLightbox(image);
-        }
-    });
-
-    mediaGallery.querySelectorAll('.media-image').forEach(function(image) {
-        image.tabIndex = 0;
-        image.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
+            if (image && mediaGallery.contains(image)) {
                 openLightbox(image);
             }
         });
-    });
+
+        mediaGallery.querySelectorAll('.media-image').forEach(function(image) {
+            image.tabIndex = 0;
+            image.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openLightbox(image);
+                }
+            });
+        });
+    }
+
+    if (infographicTrigger) {
+        infographicTrigger.addEventListener('click', function() {
+            openLightbox(infographicTrigger.querySelector('img'));
+        });
+    }
 });
