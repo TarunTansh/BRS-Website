@@ -511,6 +511,190 @@ body {
     line-height: 1.7;
 }
 
+/* Uttar Pradesh workforce upskilling vision */
+.upskilling-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f3f8f6 0%, #f8f9fa 100%);
+}
+
+.upskilling-section .section-header {
+    margin-bottom: 40px;
+}
+
+.upskilling-section .section-header h2 {
+    font-size: 40px;
+}
+
+.upskilling-section .section-header p {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.upskilling-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 32px;
+    align-items: start;
+    margin-bottom: 48px;
+}
+
+.upskilling-copy,
+.upskilling-infographic {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.upskilling-copy {
+    padding: 32px;
+}
+
+.upskilling-copy h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.upskilling-copy h4 {
+    font-size: 18px;
+    margin: 24px 0 12px;
+}
+
+.upskilling-copy p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.upskilling-support-list {
+    display: grid;
+    gap: 12px;
+    list-style: none;
+}
+
+.upskilling-support-list li {
+    position: relative;
+    padding-left: 26px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.upskilling-support-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: 800;
+}
+
+.upskilling-infographic {
+    margin: 0;
+    padding: 12px;
+}
+
+.upskilling-infographic img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.upskilling-infographic figcaption {
+    padding: 12px 8px 4px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.upskilling-journey-title {
+    margin-bottom: 24px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.upskilling-stages {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    list-style: none;
+}
+
+.upskilling-stages li {
+    min-height: 170px;
+    padding: 22px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.upskilling-stage-number {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.upskilling-stages h4 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.upskilling-stages p,
+.upskilling-vision-note {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.upskilling-stages p {
+    font-size: 14px;
+}
+
+.upskilling-vision-note {
+    max-width: 850px;
+    margin: 24px auto 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .upskilling-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .upskilling-stages {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .upskilling-section {
+        padding: 60px 0;
+    }
+
+    .upskilling-section .section-header h2 {
+        font-size: 32px;
+    }
+
+    .upskilling-copy {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 520px) {
+    .upskilling-stages {
+        grid-template-columns: 1fr;
+    }
+
+    .upskilling-stages li {
+        min-height: 0;
+    }
+}
+
 /* Aadhaar verified image inside a feature card */
 .feature-verified-img {
     display: block;
