@@ -19,6 +19,7 @@
                     <div class="language-toggle" aria-label="Language selector">
                         <button type="button" class="language-button active" data-language="en">EN</button>
                         <button type="button" class="language-button" data-language="hi">HI</button>
+                        <button type="button" class="language-button" data-language="id" lang="id">ID</button>
                     </div>
                 </div>
                 <div class="brand-row">
@@ -40,12 +41,12 @@
                 <div class="form-grid two-col">
                     <div class="field-group">
                         <label for="name" data-i18n="name">Full name <span class="required">*</span></label>
-                        <input id="name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="Enter Your Full Name" required>
+                        <input id="name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="Enter Your Full Name" data-i18n-placeholder="namePlaceholder" required>
                         <small class="error-message" data-error-for="name"></small>
                     </div>
                     <div class="field-group">
                         <label for="phone" data-i18n="phone">Phone number <span class="required">*</span></label>
-                        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="Enter Your Phone Number" required>
+                        <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="Enter Your Phone Number" data-i18n-placeholder="phonePlaceholder" required>
                         <small class="error-message" data-error-for="phone"></small>
                     </div>
                 </div>

@@ -118,6 +118,7 @@
             <div class="success-language-toggle">
                 <a id="englishToggle" href="?lang=en">EN</a>
                 <a id="hindiToggle" href="?lang=hi">HI</a>
+                <a id="indonesianToggle" href="?lang=id" lang="id">ID</a>
             </div>
             <div class="success-mark" aria-hidden="true">&#10003;</div>
             <div class="brand-row">
@@ -136,7 +137,7 @@
         (function () {
             const params = new URLSearchParams(window.location.search);
             const eventCity = (params.get('event_city') || '').trim().toLowerCase();
-            const language = params.get('lang') === 'hi' ? 'hi' : 'en';
+            const language = ['en', 'hi', 'id'].includes(params.get('lang')) ? params.get('lang') : 'en';
             const eventSummary = document.getElementById('successEvent');
             const translations = {
                 en: {
@@ -156,25 +157,38 @@
                     home: 'होम पेज पर जाएं',
                     languageLink: 'English',
                     documentTitle: 'पंजीकरण सफल | Bharat Rojgar Sewa'
+                },
+                id: {
+                    title: 'Pendaftaran berhasil!',
+                    message: 'Pendaftaran Anda selesai. Kehadiran Anda telah dicatat.',
+                    eyebrow: 'Bharat Rojgar Mahotsav',
+                    event: 'Bharat Rojgar Mahotsav | Edisi {city}',
+                    home: 'Buka beranda',
+                    documentTitle: 'Pendaftaran berhasil | Bharat Rojgar Sewa'
                 }
             };
             const text = translations[language];
             const displayCity = eventCity ? eventCity.charAt(0).toUpperCase() + eventCity.slice(1) : '';
 
             document.documentElement.lang = language;
+            document.querySelector('.success-language-toggle').setAttribute('aria-label', language === 'id' ? 'Pilih bahasa' : language === 'hi' ? 'भाषा चुनें' : 'Language selector');
             document.title = text.documentTitle;
             document.getElementById('successEyebrow').textContent = text.eyebrow;
             document.getElementById('successTitle').textContent = text.title;
             document.getElementById('successMessage').textContent = text.message;
             document.getElementById('homeLink').textContent = text.home;
+            document.getElementById('homeLink').href = language === 'id' ? '/index-id.html' : language === 'hi' ? '/index-hi.html' : '/';
 
             const languageQuery = `event_city=${encodeURIComponent(eventCity)}&event_key=${encodeURIComponent(params.get('event_key') || '')}`;
             const englishToggle = document.getElementById('englishToggle');
             const hindiToggle = document.getElementById('hindiToggle');
+            const indonesianToggle = document.getElementById('indonesianToggle');
             englishToggle.href = `registration-success.html?${languageQuery}&lang=en`;
             hindiToggle.href = `registration-success.html?${languageQuery}&lang=hi`;
+            indonesianToggle.href = `registration-success.html?${languageQuery}&lang=id`;
             englishToggle.classList.toggle('active', language === 'en');
             hindiToggle.classList.toggle('active', language === 'hi');
+            indonesianToggle.classList.toggle('active', language === 'id');
 
             if (eventCity) {
                 eventSummary.textContent = text.event.replace('{city}', displayCity);

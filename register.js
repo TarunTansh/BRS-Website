@@ -8,7 +8,9 @@ const translations = {
         title: 'Candidate registration',
         subtitle: 'Register for the employment event. Your attendance will be marked after successful submission.',
         name: 'Full name',
+        namePlaceholder: 'Enter your full name',
         phone: 'Phone number',
+        phonePlaceholder: 'Enter your phone number',
         gender: 'Gender',
         dateOfBirth: 'Date of birth',
         area: 'Area',
@@ -50,7 +52,9 @@ const translations = {
         title: 'उम्मीदवार पंजीकरण',
         subtitle: 'रोजगार कार्यक्रम के लिए पंजीकरण करें। सफल पंजीकरण के बाद आपकी उपस्थिति दर्ज की जाएगी।',
         name: 'पूरा नाम',
+        namePlaceholder: 'अपना पूरा नाम दर्ज करें',
         phone: 'फोन नंबर',
+        phonePlaceholder: 'अपना फोन नंबर दर्ज करें',
         gender: 'लिंग',
         dateOfBirth: 'जन्म तिथि',
         area: 'क्षेत्र',
@@ -85,6 +89,50 @@ const translations = {
         localMessage: 'पंजीकरण केवल लाइव वेबसाइट से किया जा सकता है। कृपया अपने कार्यक्रम के QR लिंक से https://bharatrojgarsewa.com/register.html खोलें।',
         apiError: 'पंजीकरण पूरा नहीं हो सका। कृपया दोबारा प्रयास करें।',
         eventSummary: 'भारत रोजगार महोत्सव | {city} संस्करण'
+    },
+    id: {
+        back: '&larr; Beranda Bharat Rojgar Sewa',
+        eyebrow: 'Bharat Rojgar Mahotsav',
+        title: 'Pendaftaran kandidat',
+        subtitle: 'Daftar untuk acara bursa kerja. Kehadiran Anda akan dicatat setelah pendaftaran berhasil dikirim.',
+        name: 'Nama lengkap',
+        namePlaceholder: 'Masukkan nama lengkap Anda',
+        phone: 'Nomor telepon',
+        phonePlaceholder: 'Masukkan nomor telepon Anda',
+        gender: 'Jenis kelamin',
+        dateOfBirth: 'Tanggal lahir',
+        area: 'Wilayah',
+        city: 'Kota',
+        qualification: 'Pendidikan tertinggi',
+        experienceYears: 'Pengalaman (tahun)',
+        experienceMonths: 'Pengalaman (bulan)',
+        genderPlaceholder: 'Pilih jenis kelamin',
+        qualificationPlaceholder: 'Pilih pendidikan tertinggi',
+        genderMale: 'Laki-laki',
+        genderFemale: 'Perempuan',
+        genderOther: 'Lainnya',
+        qualificationBelow10: 'Di bawah kelas 10',
+        qualification10th: 'Kelas 10 / SSLC',
+        qualification12th: 'Kelas 12 / PUC',
+        qualificationDiploma: 'Diploma',
+        qualificationIti: 'ITI',
+        qualificationGraduation: 'Sarjana',
+        qualificationPostgraduation: 'Pascasarjana',
+        qualificationOthers: 'Lainnya',
+        submit: 'Daftar dan catat kehadiran',
+        submitting: 'Mengirim...',
+        required: 'Kolom ini wajib diisi.',
+        invalidPhone: 'Masukkan nomor telepon 10 digit yang valid.',
+        futureDate: 'Tanggal lahir tidak boleh di masa depan.',
+        underAge: 'Kandidat harus berusia minimal 18 tahun.',
+        invalidYears: 'Masukkan jumlah tahun antara 0 dan 60.',
+        invalidMonths: 'Masukkan jumlah bulan antara 0 dan 11.',
+        checkFields: 'Periksa kolom yang ditandai lalu coba lagi.',
+        missingEvent: 'Tautan pendaftaran ini tidak memiliki informasi acara. Silakan pindai ulang kode QR acara.',
+        submittingMessage: 'Pendaftaran Anda sedang dikirim...',
+        localMessage: 'Pendaftaran harus dikirim melalui situs produksi. Buka https://bharatrojgarsewa.com/register.html melalui tautan QR acara Anda.',
+        apiError: 'Pendaftaran tidak dapat diselesaikan. Silakan coba lagi.',
+        eventSummary: 'Bharat Rojgar Mahotsav | Edisi {city}'
     }
 };
 
@@ -96,12 +144,21 @@ function setLanguage(language) {
     currentLanguage = translations[language] ? language : 'en';
     const text = translations[currentLanguage];
     document.documentElement.lang = currentLanguage;
-    document.title = currentLanguage === 'hi' ? 'भारत रोजगार महोत्सव पंजीकरण | Bharat Rojgar Sewa' : 'Bharat Rojgar Mahotsav Registration | Bharat Rojgar Sewa';
+    const titles = {
+        en: 'Bharat Rojgar Mahotsav Registration | Bharat Rojgar Sewa',
+        hi: 'भारत रोजगार महोत्सव पंजीकरण | Bharat Rojgar Sewa',
+        id: 'Pendaftaran Bharat Rojgar Mahotsav | Bharat Rojgar Sewa'
+    };
+    document.title = titles[currentLanguage];
 
     document.querySelectorAll('[data-i18n]').forEach(function(node) {
         const key = node.dataset.i18n;
         node.innerHTML = `${text[key]}${node.tagName === 'LABEL' ? ' <span class="required">*</span>' : ''}`;
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(node) {
+        node.placeholder = text[node.dataset.i18nPlaceholder];
+    });
+    document.querySelector('[data-i18n="back"]').href = currentLanguage === 'id' ? '/index-id.html' : currentLanguage === 'hi' ? '/index-hi.html' : '/';
     document.querySelector('[data-option="gender-placeholder"]').textContent = text.genderPlaceholder;
     document.querySelector('[data-option="qualification-placeholder"]').textContent = text.qualificationPlaceholder;
     document.querySelectorAll('[data-option]').forEach(function(option) {
@@ -115,6 +172,7 @@ function setLanguage(language) {
     document.querySelectorAll('.language-button').forEach(function(button) {
         button.classList.toggle('active', button.dataset.language === currentLanguage);
     });
+    document.querySelector('.language-toggle').setAttribute('aria-label', currentLanguage === 'id' ? 'Pilih bahasa' : currentLanguage === 'hi' ? 'भाषा चुनें' : 'Language selector');
 
     const eventSummary = document.getElementById('eventSummary');
     const eventParams = getEventParams();
@@ -311,5 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    setLanguage('en');
+    const initialLanguage = new URLSearchParams(window.location.search).get('lang');
+    setLanguage(translations[initialLanguage] ? initialLanguage : 'en');
 });

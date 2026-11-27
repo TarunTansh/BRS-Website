@@ -20,6 +20,7 @@
                 <div class="lang-toggle" aria-label="Language switcher">
                     <button type="button" class="lang-btn active" data-lang="hi">HI</button>
                     <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    <button type="button" class="lang-btn" data-lang="id" lang="id">ID</button>
                 </div>
             </div>
 
@@ -50,7 +51,15 @@
                     documentTitle: 'Thank You | Bharat Rojgar Mahotsav',
                     title: 'Thank You!',
                     message: 'Thank you for your valuable feedback. Your suggestion will help improve Bharat Rojgar Sewa.',
-                    button: 'OK'
+                    button: 'OK',
+                    home: '/'
+                },
+                id: {
+                    documentTitle: 'Terima Kasih | Bharat Rojgar Mahotsav',
+                    title: 'Terima kasih!',
+                    message: 'Terima kasih atas masukan Anda. Saran Anda akan membantu meningkatkan Bharat Rojgar Sewa.',
+                    button: 'Kembali ke beranda',
+                    home: '/index-id.html'
                 }
             };
 
@@ -62,6 +71,7 @@
                 title.textContent = content.title;
                 message.textContent = content.message;
                 homeButton.textContent = content.button;
+                document.querySelector('.lang-toggle').setAttribute('aria-label', selectedLanguage === 'id' ? 'Pilih bahasa' : selectedLanguage === 'en' ? 'Language switcher' : 'भाषा बदलें');
                 languageButtons.forEach((button) => {
                     button.classList.toggle('active', button.dataset.lang === selectedLanguage);
                 });
@@ -74,7 +84,7 @@
             });
 
             homeButton.addEventListener('click', function () {
-                window.location.href = '/index.html';
+                window.location.href = translations[document.documentElement.lang].home || '/index-hi.html';
             });
 
             setLanguage(params.get('lang') || 'hi');

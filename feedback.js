@@ -52,6 +52,30 @@
             jobQuestion: 'Did you get good job opportunities?',
             recommendQuestion: 'Will you recommend this event to your friends?',
             cityOptions: { lucknow: 'Lucknow', patna: 'Patna', ballia: 'Ballia', bahraich: 'Bahraich', chennai: 'Chennai' }
+        },
+        id: {
+            title: 'Umpan Balik Bharat Rojgar Mahotsav',
+            subtitle: 'Masukan Anda membantu kami meningkatkan acara perekrutan dan pengalaman kandidat di masa mendatang.',
+            back: '← Kembali ke beranda',
+            submit: 'Kirim umpan balik',
+            success: 'Terima kasih atas masukan Anda. Saran Anda akan membantu meningkatkan Bharat Rojgar Sewa.',
+            submitting: 'Mengirim...',
+            apiNotConfigured: 'API umpan balik belum dikonfigurasi untuk lingkungan ini. Atur URL backend yang benar sebelum mengirim.',
+            submitError: 'Umpan balik tidak dapat dikirim sekarang. Silakan coba lagi.',
+            validationError: 'Lengkapi semua kolom yang wajib diisi.',
+            selectCity: 'Pilih kota',
+            cityLabel: 'Kota acara',
+            dateLabel: 'Tanggal acara',
+            phoneLabel: 'Nomor telepon',
+            suggestionLabel: 'Apa satu saran Anda untuk membantu kami menjadi lebih baik?',
+            suggestionPlaceholder: 'Bagikan saran Anda...',
+            cityError: 'Pilih kota acara.',
+            dateError: 'Pilih tanggal acara.',
+            phoneError: 'Masukkan nomor telepon yang valid.',
+            optionError: 'Pilih salah satu opsi.',
+            jobQuestion: 'Apakah Anda mendapatkan peluang kerja yang baik?',
+            recommendQuestion: 'Apakah Anda akan merekomendasikan acara ini kepada teman?',
+            cityOptions: { lucknow: 'Lucknow', patna: 'Patna', ballia: 'Ballia', bahraich: 'Bahraich', chennai: 'Chennai' }
         }
     };
 
@@ -59,10 +83,12 @@
 
     function setLanguage(lang) {
         currentLang = lang;
-        const t = texts[lang] || texts.hi;
+        const t = texts[lang] || texts.en;
 
         document.documentElement.lang = lang;
-        document.title = lang === 'hi' ? 'भारत रोजगार महोत्सव फीडबैक | Bharat Rojgar Mahotsav' : 'Bharat Rojgar Mahotsav Feedback';
+        document.title = lang === 'hi'
+            ? 'भारत रोजगार महोत्सव फीडबैक | Bharat Rojgar Mahotsav'
+            : lang === 'id' ? 'Umpan Balik Bharat Rojgar Mahotsav' : 'Bharat Rojgar Mahotsav Feedback';
 
         const titleNode = document.querySelector('.feedback-header h1');
         const subtitleNode = document.querySelector('.feedback-header .subtitle');
@@ -80,6 +106,8 @@
         if (titleNode) titleNode.textContent = t.title;
         if (subtitleNode) subtitleNode.textContent = t.subtitle;
         if (backNode) backNode.textContent = t.back;
+        if (backNode) backNode.href = lang === 'id' ? '/index-id.html' : lang === 'hi' ? '/index-hi.html' : '/';
+        document.querySelector('.lang-toggle')?.setAttribute('aria-label', lang === 'id' ? 'Pilih bahasa' : lang === 'hi' ? 'भाषा चुनें' : 'Language selector');
         if (submitNode) submitNode.textContent = t.submit;
         if (cityLabelNode) cityLabelNode.innerHTML = t.cityLabel + ' <span class="required">*</span>';
         if (dateLabelNode) dateLabelNode.innerHTML = t.dateLabel + ' <span class="required">*</span>';
@@ -108,6 +136,12 @@
                 ['Very Good', 'Good', 'Average', 'Poor', 'Very Poor'],
                 ['Yes', 'Somewhat', 'No'],
                 ['Yes', 'Maybe', 'No']
+            ],
+            id: [
+                ['Sangat baik', 'Baik', 'Cukup', 'Buruk', 'Sangat buruk'],
+                ['Sangat baik', 'Baik', 'Cukup', 'Buruk', 'Sangat buruk'],
+                ['Ya', 'Sebagian', 'Tidak'],
+                ['Ya', 'Mungkin', 'Tidak']
             ]
         };
 
@@ -122,8 +156,18 @@
         });
 
         const scoreGroups = document.querySelectorAll('.scale-group legend');
-        if (scoreGroups[0]) scoreGroups[0].innerHTML = (lang === 'hi' ? 'महोत्सव का आपका अनुभव कैसा रहा?' : 'How was your Mahotsav experience?') + ' <span class="required">*</span>';
-        if (scoreGroups[1]) scoreGroups[1].innerHTML = (lang === 'hi' ? 'इंटरव्यू का अनुभव कैसा रहा?' : 'How was your interview experience?') + ' <span class="required">*</span>';
+        const scoreQuestions = {
+            hi: ['महोत्सव का आपका अनुभव कैसा रहा?', 'इंटरव्यू का अनुभव कैसा रहा?'],
+            en: ['How was your Mahotsav experience?', 'How was your interview experience?'],
+            id: ['Bagaimana pengalaman Anda di Mahotsav?', 'Bagaimana pengalaman wawancara Anda?']
+        };
+        const questions = scoreQuestions[lang] || scoreQuestions.en;
+        if (scoreGroups[0]) scoreGroups[0].innerHTML = questions[0] + ' <span class="required">*</span>';
+        if (scoreGroups[1]) scoreGroups[1].innerHTML = questions[1] + ' <span class="required">*</span>';
+        document.querySelectorAll('.emoji-options')[0]?.setAttribute('aria-label', questions[0]);
+        document.querySelectorAll('.emoji-options')[1]?.setAttribute('aria-label', questions[1]);
+        document.querySelectorAll('.emoji-options')[2]?.setAttribute('aria-label', t.jobQuestion);
+        document.querySelectorAll('.emoji-options')[3]?.setAttribute('aria-label', t.recommendQuestion);
 
         langButtons.forEach((button) => {
             button.classList.toggle('active', button.dataset.lang === lang);
@@ -139,7 +183,8 @@
         });
     });
 
-    setLanguage(params.get('lang') === 'hi' ? 'hi' : 'en');
+    const requestedLanguage = params.get('lang');
+    setLanguage(texts[requestedLanguage] ? requestedLanguage : 'en');
 
     function getConfiguredApiUrl() {
         if (!apiUrl || apiUrl.includes('your-backend-domain.example.com')) {
@@ -243,11 +288,17 @@
         const digits = value.replace(/\D/g, '');
 
         if (!digits) {
-            return { valid: false, message: currentLang === 'hi' ? 'फ़ोन नंबर आवश्यक है।' : 'Phone number is required.' };
+            const requiredMessage = currentLang === 'hi'
+                ? 'फ़ोन नंबर आवश्यक है।'
+                : currentLang === 'id' ? 'Nomor telepon wajib diisi.' : 'Phone number is required.';
+            return { valid: false, message: requiredMessage };
         }
 
         if (digits.length !== 10) {
-            return { valid: false, message: currentLang === 'hi' ? 'कृपया ठीक 10 अंक दर्ज करें।' : 'Please enter exactly 10 digits.' };
+            const digitMessage = currentLang === 'hi'
+                ? 'कृपया ठीक 10 अंक दर्ज करें।'
+                : currentLang === 'id' ? 'Masukkan tepat 10 digit.' : 'Please enter exactly 10 digits.';
+            return { valid: false, message: digitMessage };
         }
 
         return { valid: true, normalized: '+91 ' + digits.slice(0, 5) + ' ' + digits.slice(5) };
