@@ -378,7 +378,6 @@ body {
     width: 320px;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
     border-radius: 16px;
     box-shadow: var(--shadow-md);
     /* green frame */
