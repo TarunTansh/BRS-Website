@@ -347,6 +347,10 @@ body {
     gap: 22px;
 }
 
+.candidate-video-section > .container {
+    width: 100%;
+}
+
 .candidate-video-title {
     display: flex;
     align-items: center;
@@ -1459,8 +1463,8 @@ body {
     }
 
     .candidate-video-embed {
-        width: min(880px, calc(100vw - 32px));
-        max-width: min(880px, calc(100vw - 32px));
+        width: min(880px, calc(100vw - 48px));
+        max-width: min(880px, calc(100vw - 48px));
         aspect-ratio: 880 / 720;
         height: auto;
     }
